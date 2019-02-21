@@ -8,8 +8,8 @@
   },
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-loader": "^6.2.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.4.1",
     "bower": "^1.7.2",
     "cross-env": "^3.2.4",
     "express": "^4.13.3",
@@ -33,7 +33,7 @@
     "grammar": "node build-grammar.js",
     "build:unminified": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "build:minified": "cross-env NODE_ENV=production MINIFIED=1 webpack --config webpack.config.js",
-    "build:1": "npm run build:unminified && npm run build:minified",
+    "build": "npm run build:unminified && npm run build:minified",
     "compile": "cross-env rimraf -rf dist/ && babel src -d dist"
   }
 }
