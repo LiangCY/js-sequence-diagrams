@@ -1,7 +1,7 @@
 {
   "name": "js-sequence-diagrams",
   "version": "1.0.0",
-  "main": "build/sequence-diagram.js",
+  "main": "dist/sequence-diagram.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bramp/js-sequence-diagrams.git"
@@ -11,13 +11,14 @@
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
     "bower": "^1.7.2",
-    "cross-env": "^3.1.4",
+    "cross-env": "^3.2.4",
     "express": "^4.13.3",
     "jison": "0.4.16",
     "jquery": "^2.2.0",
     "jshint": "^2.7.0",
     "jsonlint": "^1.6.2",
     "qunit": "^0.7.7",
+    "rimraf": "^2.6.3",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.11",
     "webpack-dev-middleware": "^1.4.0",
@@ -29,9 +30,10 @@
   },
   "scripts": {
     "start": "node devserver.js",
+    "grammar": "node build-grammar.js",
     "build:unminified": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "build:minified": "cross-env NODE_ENV=production MINIFIED=1 webpack --config webpack.config.js",
-    "build:grammar": "node build-grammar.js",
-    "build": "npm run build:unminified && npm run build:minified"
+    "build:1": "npm run build:unminified && npm run build:minified",
+    "compile": "cross-env rimraf -rf dist/ && babel src -d dist"
   }
 }
