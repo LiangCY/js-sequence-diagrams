@@ -1,23 +1,37 @@
 {
   "name": "js-sequence-diagrams",
+  "version": "1.0.0",
+  "main": "build/sequence-diagram.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bramp/js-sequence-diagrams.git"
   },
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "bower": "1.8.x",
-    "eslint": "3.16.x",
-    "eslint-config-google": "0.7.x",
-    "jison": "0.4.15",
-    "jshint": "2.9.x",
-    "jsonlint": "1.6.x",
-    "minifier": "0.8.x",
-    "preprocessor": "1.4.x",
-    "qunit": "0.9.x",
-    "uglify-js": "2.8.x"
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "bower": "^1.7.2",
+    "cross-env": "^3.1.4",
+    "express": "^4.13.3",
+    "jison": "0.4.16",
+    "jquery": "^2.2.0",
+    "jshint": "^2.7.0",
+    "jsonlint": "^1.6.2",
+    "qunit": "^0.7.7",
+    "uglify-js": "^2.6.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "raphael": "^2.2.7"
   },
   "scripts": {
-    "test": "make test"
+    "start": "node devserver.js",
+    "build:unminified": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:minified": "cross-env NODE_ENV=production MINIFIED=1 webpack --config webpack.config.js",
+    "build:grammar": "node build-grammar.js",
+    "build": "npm run build:unminified && npm run build:minified"
   }
 }

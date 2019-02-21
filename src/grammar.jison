@@ -1,6 +1,6 @@
 /** js sequence diagrams
- *  https://bramp.github.io/js-sequence-diagrams/
- *  (c) 2012-2017 Andrew Brampton (bramp.net)
+ *  http://bramp.github.io/js-sequence-diagrams/
+ *  (c) 2012-2013 Andrew Brampton (bramp.net)
  *  Simplified BSD license.
  */
 %lex
@@ -10,8 +10,6 @@
 %{
 	// Pre-lexer code can go here
 %}
-
-%x title
 
 %%
 
@@ -23,11 +21,9 @@
 "right of"        return 'right_of';
 "over"            return 'over';
 "note"            return 'note';
-"title"           { this.begin('title'); return 'title'; }
-<title>[^\r\n]+   { this.popState(); return 'MESSAGE'; }
+"title"           return 'title';
 ","               return ',';
-[^\->:,\r\n"]+    return 'ACTOR';
-\"[^"]+\"         return 'ACTOR';
+[^\->:,\r\n]+     return 'ACTOR';
 "--"              return 'DOTLINE';
 "-"               return 'LINE';
 ">>"              return 'OPENARROW';
